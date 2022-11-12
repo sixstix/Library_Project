@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+  
   </head>
   <body>
     <main
@@ -15,9 +21,21 @@
       "
     >
       <div>
-        <h1>Library Project</h1>
-        <div id="library">
+        <h1>LIBRARY PROJECT</h1>
+        <div class ="card" id="library">
           <!-- Add table here -->
+          <form id="addBookBtn"> 
+            <label for="input-title"></label>Enter Title:</label>
+            <input type ="text" id ="input-title" required/>
+            
+            <label for="input-author">Enter Author:</label>
+            <input type ="text" id ="input-author" required/>
+            
+            <label for="input-readBook">Read Book?</label>
+            <input type ="checkbox" name ="readBook" id ="input-readBook"/>
+
+            <button type="submit">Add Book</button>
+          </form>
           <table id="table" style="min-width: 680px; margin: 2rem">
             <thead>
               <tr>
@@ -26,7 +44,7 @@
                 <th>Read</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="booksList">
               <tr>
                 <td>Name of the Wind</td>
                 <td>Patrick Rothfuss</td>
@@ -43,6 +61,7 @@
             </tbody>
           </table>
         </div>
+      </div>
     </main>
 
     <script src="app.js"></script>
