@@ -49,13 +49,24 @@ class Library {
         this.books.push(book);
 
         //Created Elements
+        const tRow = document.createElement("tr");
+        tRow.setAttribute("bookId", this.bookCount);
         const tableRow = document.createElement("tr");
         const tableTitle = document.createElement("td");
         tableTitle.textContent = book.title;
         const tableAuthor = document.createElement("td");
         tableAuthor.textContent = book.author;
         const tableIsRead = document.createElement("td");
-        //tableIsRead.textContent = book.isRead;
+        tableIsRead.textContent = book.isRead;
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove Button";
+        const removeButtonAbortController = new AbortController();
+        removeButton.addEventListener("click", (event) => {
+            this.removeBook(event.target.parentElement);
+            removeButtonAbortController.abort();
+        }, {signal: removeButtonAbortController.signal}); 
+
 
         const inputIsRead = document.createElement("input");
         inputIsRead.type = "checkbox";
@@ -67,6 +78,7 @@ class Library {
         tableRow.append(tableTitle);
         tableRow.append(tableAuthor);
         tableRow.append(tableIsRead);
+        tableRow.append(removeButton);
         getTableBody.append(tableRow);
 
         this.bookCount++;
@@ -74,6 +86,12 @@ class Library {
         getTitle.value = "";
         getAuthor.value = "";
         getReadBook.checked = false;
+    }
+
+    removeBook(tRow) {
+        const bookId = tRow.getAttribute("bookId");
+        tRow.remove();
+        this.books.splice(bookId, 1);
     }
 }
 
